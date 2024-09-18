@@ -1,5 +1,3 @@
-import Icon from '@mdi/react';
-import { mdiArrowRightThinCircleOutline } from '@mdi/js';
 import '../index.css'
 
 

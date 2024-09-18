@@ -5,9 +5,10 @@ import Result from './components/Result';
 
 function App() {
 
-  const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(false);
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
 
   async function shortenUrl(url) {
     const request = {
@@ -27,20 +28,31 @@ function App() {
     fetch('https://url-shortener-jjho.onrender.com/shorten', options)
     .then(response => {
 
-      // exibir mensagens e link encurtado na tela
+      if (response.status === 200 || response.status === 201) {
+        setTitle('Aqui está: '); 
+      }
 
-      if (response.status === 200) console.log('Já tava criado pae'); 
-      if (response.status === 201) console.log('Link encurtado com sucesso');
-      if (response.status === 400) console.log('Dados inválidos');
-      
+      if (response.status === 400) {
+        setTitle('URL inválida :(');
+        setContent('Insira uma url válida!');
+      }
 
       setResult(true);
 
       setLoading(false);
       return response.json()
     })
-    .then(data => console.log(data))
+    .then((data) => {
+      setContent(data.short_url);
+
+    })
     .catch(error => console.log(error));
+  }
+
+  function refresh (){
+    setResult(false);
+    setContent('');
+    setResult('');
   }
 
   return (
@@ -56,7 +68,7 @@ function App() {
         </div>
         ) : (
           <div className="main">
-            <Result></Result>
+            <Result title={title} content={content} handler={refresh}></Result>
           </div>
         )
         

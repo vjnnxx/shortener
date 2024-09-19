@@ -19,6 +19,7 @@ function App() {
       method: 'POST',
       headers: {
       'Content-Type': 'application/json',
+      'mode': 'no-cors',
       },
       body: JSON.stringify(request),
     };
@@ -44,7 +45,7 @@ function App() {
     })
     .then((data) => {
       setContent(data.short_url);
-
+      console.log(data.short_url)
     })
     .catch(error => console.log(error));
   }

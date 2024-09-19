@@ -58,3 +58,15 @@ body{
   display: flex;
   flex-direction: column;
 }
+
+.return{
+  background-color: #78c3fb;
+  border: none;
+  font-size: 20px;
+  color: white;
+  text-decoration: underline;
+}
+
+.return:hover{
+  color: #173753;
+}

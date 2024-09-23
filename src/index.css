@@ -70,3 +70,21 @@ body{
 .return:hover{
   color: #173753;
 }
+
+.footer{
+  text-align: center;
+}
+
+.footer>p{
+  font-size: 28px;
+  color: #cc3363;
+  
+}
+
+.github-link{
+  color: #cc3363;
+}
+
+.github-link:hover{
+  color: #e0ff4f;
+}
